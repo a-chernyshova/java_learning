@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class App {
     public static void main(String[] args) {
-        if (args.length <= 0) {
+        if (args.length <= 1) {
             exit("File and node names are required");
         }
         System.out.println(args[0]);
