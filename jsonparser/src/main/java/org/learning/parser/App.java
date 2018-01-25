@@ -17,7 +17,9 @@ public class App {
             RequestArgs requestArgs = new RequestArgs().invoke();
             File source = requestArgs.getSource();
             String nodeName = requestArgs.getNodeName();
-
+            if (!source.exists()) {
+                exit("File isn't found");
+            }
             getNodeValue(source, nodeName);
         } else {
             System.out.println(args[0]);
@@ -48,27 +50,5 @@ public class App {
     private static void exit(String s) {
         System.out.println(s);
         System.exit(100);
-    }
-
-    private static class RequestArgs {
-        private File source;
-        private String nodeName;
-
-        public File getSource() {
-            return source;
-        }
-
-        public String getNodeName() {
-            return nodeName;
-        }
-
-        public RequestArgs invoke() {
-            Scanner input = new Scanner(System.in);
-            System.out.println("Input path to file:");
-            source = new File(input.nextLine());
-            System.out.println("Input node name:");
-            nodeName = input.nextLine();
-            return this;
-        }
     }
 }
