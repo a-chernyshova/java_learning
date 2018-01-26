@@ -11,14 +11,14 @@ public class App {
     public static void main(String[] args) {
         if (args.length <= 1) {
             System.out.println("File and node names are required");
-
             //lterm
             //C:\Users\Anastasiia_Chernysho\epam_trainings\final_java_repo\java_learning\jsonparser\src\main\resources\test.json
             RequestArgs requestArgs = new RequestArgs().invoke();
             File source = requestArgs.getSource();
             String nodeName = requestArgs.getNodeName();
             if (!source.exists()) {
-                exit("File isn't found");
+                //exit("File isn't found");
+                throw new RuntimeException("File not found");
             }
             getNodeValue(source, nodeName);
         } else {
@@ -26,7 +26,8 @@ public class App {
             File source = new File(args[0]);
             String nodeName = args[1];
             if (!source.exists()) {
-                exit("File isn't found");
+                //exit("File isn't found");
+                throw new RuntimeException("File not found");
             }
             getNodeValue(source, nodeName);
         }
