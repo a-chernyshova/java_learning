@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class CalculatorTestTrigonometry {
     private Calculator calc;
 
-    @BeforeClass()
+    @BeforeClass(alwaysRun = true)
     public void setUp() {
         calc = new Calculator();
     }

@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class CalculatorTestSub {
     private Calculator calc;
 
-    @BeforeClass()
+    @BeforeClass(alwaysRun = true)
     public void setUp() {
         calc = new Calculator();
     }

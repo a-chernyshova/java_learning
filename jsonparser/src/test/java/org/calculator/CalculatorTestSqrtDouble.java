@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class CalculatorTestSqrtDouble {
     private Calculator calc;
 
-    @BeforeClass()
+    @BeforeClass(alwaysRun = true)
     public void setUp() {
         calc = new Calculator();
     }

@@ -11,7 +11,7 @@ import org.testng.annotations.Parameters;
 public class CalculatorTestDiv {
     private Calculator calc;
 
-    @BeforeClass()
+    @BeforeClass(alwaysRun = true)
     public void setUp() {
         calc = new Calculator();
     }

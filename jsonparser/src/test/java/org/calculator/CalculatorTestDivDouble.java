@@ -5,13 +5,15 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 
 public class CalculatorTestDivDouble {
     private Calculator calc;
 
-    @BeforeClass()
+    @BeforeClass(alwaysRun = true)
+    //@BeforeGroups(groups = {"smoke", "main"})
     public void setUp() {
         calc = new Calculator();
     }
@@ -30,7 +32,7 @@ public class CalculatorTestDivDouble {
                 {5, 2, 2.5}
         };
     }
-    @org.testng.annotations.Test(expectedExceptions = ArithmeticException.class, groups = {"main"})
+    @org.testng.annotations.Test(expectedExceptions = ArithmeticException.class, groups = {"smoke"})
     public void testDivByZero() {
         double a = 1.0;
         double b = 0.0;

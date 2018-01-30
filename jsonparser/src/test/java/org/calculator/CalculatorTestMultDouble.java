@@ -7,7 +7,7 @@ import org.testng.annotations.DataProvider;
 public class CalculatorTestMultDouble {
     private Calculator calc;
 
-    @BeforeClass()
+    @BeforeClass(alwaysRun = true)
     public void setUp() {
         calc = new Calculator();
     }
