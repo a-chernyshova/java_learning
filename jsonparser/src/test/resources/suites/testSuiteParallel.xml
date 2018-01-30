@@ -1,0 +1,74 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Calculator" verbose="1" parallel="true" thread-count="8">
+    <test name="CalculatorTestSumLong">
+        <classes>
+            <class name="org.calculator.CalculatorTestSum"></class>
+        </classes>
+    </test>
+    <test name="CalculatorTestSumDouble">
+        <classes>
+            <class name="org.calculator.CalculatorTestSumDouble"></class>
+        </classes>
+    </test>
+    <test name="CalculatorTestSubLong">
+        <parameter name="a" value="100" />
+        <parameter name="b" value="100" />
+        <parameter name="expected" value="0" />
+        <classes>
+            <class name="org.calculator.CalculatorTestSub"></class>
+        </classes>
+    </test>
+    <test name="CalculatorTestSubDouble">
+        <parameter name="a" value="5.123" />
+        <parameter name="b" value="1.011" />
+        <parameter name="expected" value="4.112" />
+        <classes>
+            <class name="org.calculator.CalculatorTestSubDouble"></class>
+        </classes>
+    </test>
+    <test name="CalculatorTestMultLong">
+        <classes>
+            <class name="org.calculator.CalculatorTestMult"></class>
+        </classes>
+    </test>
+    <test name="CalculatorTestMultDouble">
+        <classes>
+            <class name="org.calculator.CalculatorTestMultDouble"></class>
+        </classes>
+    </test>
+    <test name="CalculatorTestDivLong">
+        <classes>
+            <class name="org.calculator.CalculatorTestDiv"></class>
+        </classes>
+    </test>
+    <test name="CalculatorTestDivDouble">
+        <classes>
+            <class name="org.calculator.CalculatorTestDivDouble"></class>
+        </classes>
+    </test>
+    <test name="CalculatorTestPowDouble">
+        <classes>
+            <class name="org.calculator.CalculatorTestPowDouble"></class>
+        </classes>
+    </test>
+    <test name="CalculatorTestSqrtDouble">
+        <classes>
+            <class name="org.calculator.CalculatorTestSqrtDouble"></class>
+        </classes>
+    </test>
+    <test name="CalculatorTestTrigonometry">
+        <classes>
+            <class name="org.calculator.CalculatorTestTrigonometry"></class>
+        </classes>
+    </test>
+    <test name="CalculatorTestIsPositive">
+        <classes>
+            <class name="org.calculator.CalculatorTestIsPositive"></class>
+        </classes>
+    </test>
+    <test name="CalculatorTestIsNegative">
+        <classes>
+            <class name="org.calculator.CalculatorTestIsNegative"></class>
+        </classes>
+    </test>
+</suite>

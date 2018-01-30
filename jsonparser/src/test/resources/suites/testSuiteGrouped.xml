@@ -1,0 +1,36 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="smoke" verbose="1" parallel="false" thread-count="8">
+    <test name="CalculatorTestDivLong">
+        <groups>
+            <run>
+                <include name="smoke"/>
+                <exclude name="main"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="org.calculator.CalculatorTestDiv"></class>
+        </classes>
+    </test>
+    <test name="CalculatorTestDivDouble">
+        <groups>
+            <run>
+                <include name="smoke"/>
+                <exclude name="main"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="org.calculator.CalculatorTestDivDouble"></class>
+        </classes>
+    </test>
+    <test name="CalculatorTestSqrtDouble">
+        <groups>
+            <run>
+                <include name="smoke"/>
+                <exclude name="main"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="org.calculator.CalculatorTestSqrtDouble"></class>
+        </classes>
+    </test>
+</suite>
