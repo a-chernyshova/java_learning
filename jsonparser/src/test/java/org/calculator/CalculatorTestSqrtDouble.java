@@ -1,9 +1,9 @@
 package org.calculator;
 import com.epam.tat.module4.Calculator;;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
 
 public class CalculatorTestSqrtDouble {
     private Calculator calc;
@@ -13,7 +13,7 @@ public class CalculatorTestSqrtDouble {
         calc = new Calculator();
     }
 
-    @org.testng.annotations.Test(dataProvider = "sqrtDataProvider", groups = {"smoke"})
+    @Test(dataProvider = "sqrtDataProvider", groups = {"smoke"})
     public void testSqrtDouble(double a, double expected) {
         Assert.assertEquals(calc.sqrt(a),expected);
     }

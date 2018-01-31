@@ -1,9 +1,7 @@
 package org.calculator;
 import com.epam.tat.module4.Calculator;;
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
@@ -16,12 +14,12 @@ public class CalculatorTestDiv {
         calc = new Calculator();
     }
 
-    @org.testng.annotations.Test(dataProvider = "sumDataProviderPositive", groups = {"main", "smoke"})
+    @Test(dataProvider = "sumDataProviderPositive", groups = {"main", "smoke"})
     public void testSumLong(long a, long b, long expected) {
         Assert.assertEquals(calc.div(a, b),expected);
     }
 
-    @org.testng.annotations.Test(dataProvider = "sumDataProviderNegative", groups = {"main"})
+    @Test(dataProvider = "sumDataProviderNegative", groups = {"main"})
     public void testSumLong(long a, long b, double expected) {
 
         Assert.assertEquals(calc.div(a, b),expected);
@@ -43,7 +41,7 @@ public class CalculatorTestDiv {
         };
     }
 
-    @org.testng.annotations.Test(expectedExceptions = NumberFormatException.class, groups = {"main"})
+    @Test(expectedExceptions = NumberFormatException.class, groups = {"main"})
     public void testDivLong() {
         long a = 1L;
         long b = 0;

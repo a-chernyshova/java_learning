@@ -1,6 +1,7 @@
 package org.calculator;
 import com.epam.tat.module4.Calculator;;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 
@@ -12,7 +13,7 @@ public class CalculatorTestIsPositive {
         calc = new Calculator();
     }
 
-    @org.testng.annotations.Test(dataProvider = "isPositiveDataProvider")
+    @Test(dataProvider = "isPositiveDataProvider")
     public void testIsPositive(long a, boolean expected) {
 
         Assert.assertEquals(calc.isPositive(a), expected);

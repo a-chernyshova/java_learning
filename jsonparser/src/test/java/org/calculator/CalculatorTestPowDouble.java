@@ -1,6 +1,7 @@
 package org.calculator;
 import com.epam.tat.module4.Calculator;;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 
@@ -12,7 +13,7 @@ public class CalculatorTestPowDouble {
         calc = new Calculator();
     }
 
-    @org.testng.annotations.Test(dataProvider = "powDataProvider")
+    @Test(dataProvider = "powDataProvider")
     public void testSumLong(double a, double b, double expected) {
         Assert.assertEquals(calc.pow(a, b),expected);
     }

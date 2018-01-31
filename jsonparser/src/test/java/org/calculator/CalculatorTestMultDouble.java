@@ -1,6 +1,7 @@
 package org.calculator;
 import com.epam.tat.module4.Calculator;;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 
@@ -12,7 +13,7 @@ public class CalculatorTestMultDouble {
         calc = new Calculator();
     }
 
-    @org.testng.annotations.Test(dataProvider = "multDataProvider", groups = {"smoke"})
+    @Test(dataProvider = "multDataProvider", groups = {"smoke"})
     public void testMultLong(double a, double b, double expected) {
 
         Assert.assertEquals(calc.mult(a, b),expected);
