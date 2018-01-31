@@ -2,3 +2,4 @@ jsonparser/.idea/
 jsonparser/json-parser.iml
 jsonparser/target/*
 *.class
+jsonparser/test-output/
