@@ -7,13 +7,7 @@ import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 
-public class CalculatorTestDivDouble {
-    private Calculator calc;
-
-    @BeforeClass(alwaysRun = true)
-    public void setUp() {
-        calc = new Calculator();
-    }
+public class CalculatorTestDivDouble extends CalculatorTestPrecondition{
 
     @Test(dataProvider = "divDataProvider", groups = {"smoke"})
     public void testDivDouble(double a, double b, double expected) {

@@ -5,13 +5,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 
-public class CalculatorTestIsPositive {
-    private Calculator calc;
-
-    @BeforeClass(alwaysRun = true)
-    public void setUp() {
-        calc = new Calculator();
-    }
+public class CalculatorTestIsPositive extends CalculatorTestPrecondition{
 
     @Test(dataProvider = "isPositiveDataProvider")
     public void testIsPositive(long a, boolean expected) {

@@ -5,13 +5,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 
-public class CalculatorTestSqrtDouble {
-    private Calculator calc;
-
-    @BeforeClass(alwaysRun = true)
-    public void setUp() {
-        calc = new Calculator();
-    }
+public class CalculatorTestSqrtDouble extends CalculatorTestPrecondition{
 
     @Test(dataProvider = "sqrtDataProvider", groups = {"smoke"})
     public void testSqrtDouble(double a, double expected) {

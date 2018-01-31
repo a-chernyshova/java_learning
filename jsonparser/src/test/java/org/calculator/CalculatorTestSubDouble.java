@@ -6,13 +6,7 @@ import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class CalculatorTestSubDouble {
-    private Calculator calc;
-
-    @BeforeClass(alwaysRun = true)
-    public void setUp() {
-        calc = new Calculator();
-    }
+public class CalculatorTestSubDouble extends CalculatorTestPrecondition{
 
     @Test(groups = {"smoke"})
     @Parameters({"a", "b", "expected"})

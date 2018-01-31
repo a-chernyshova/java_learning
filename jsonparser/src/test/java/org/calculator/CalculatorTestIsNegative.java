@@ -5,13 +5,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 
-public class CalculatorTestIsNegative {
-    private Calculator calc;
-
-    @BeforeClass(alwaysRun = true)
-    public void setUp() {
-        calc = new Calculator();
-    }
+public class CalculatorTestIsNegative extends CalculatorTestPrecondition{
 
     @Test(dataProvider = "isNegativeDataProvider", groups = {"smoke"})
     public void testIsNegative(long a, boolean expected) {

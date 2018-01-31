@@ -5,13 +5,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 
-public class CalculatorTestMultDouble {
-    private Calculator calc;
-
-    @BeforeClass(alwaysRun = true)
-    public void setUp() {
-        calc = new Calculator();
-    }
+public class CalculatorTestMultDouble extends CalculatorTestPrecondition{
 
     @Test(dataProvider = "multDataProvider", groups = {"smoke"})
     public void testMultLong(double a, double b, double expected) {

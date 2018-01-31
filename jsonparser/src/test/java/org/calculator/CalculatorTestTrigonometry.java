@@ -1,17 +1,11 @@
 package org.calculator;
-import com.epam.tat.module4.Calculator;;
+
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class CalculatorTestTrigonometry {
-    private Calculator calc;
-
-    @BeforeClass(alwaysRun = true)
-    public void setUp() {
-        calc = new Calculator();
-    }
+public class CalculatorTestTrigonometry extends CalculatorTestPrecondition{
 
     @Test(dataProvider = "cosDataProvider")
     public void testCosDouble(double a, double expected) {

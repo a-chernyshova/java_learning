@@ -6,13 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 
-public class CalculatorTestDiv {
-    private Calculator calc;
-
-    @BeforeClass(alwaysRun = true)
-    public void setUp() {
-        calc = new Calculator();
-    }
+public class CalculatorTestDiv extends CalculatorTestPrecondition {
 
     @Test(dataProvider = "sumDataProviderPositive", groups = {"main", "smoke"})
     public void testSumLong(long a, long b, long expected) {

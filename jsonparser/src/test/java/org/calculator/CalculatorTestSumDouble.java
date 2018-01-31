@@ -1,17 +1,11 @@
 package org.calculator;
-import com.epam.tat.module4.Calculator;;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 
-public class CalculatorTestSumDouble {
-    private Calculator calc;
-
-    @BeforeClass()
-    public void setUp() {
-        calc = new Calculator();
-    }
+public class CalculatorTestSumDouble extends CalculatorTestPrecondition{
 
     @Test(dataProvider = "sumDataProvider")
     public void testSumLong(double a, double b, double expected) {
