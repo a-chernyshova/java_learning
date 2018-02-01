@@ -1,6 +1,6 @@
 package org.learning.animals;
 
-public abstract class Animal {
+public abstract class Animal implements Livable {
     String name;
     Long tall;
     Long weight;
@@ -30,5 +30,8 @@ public abstract class Animal {
     }
     public void reproduce(String way){
         System.out.println("Creating childs: " + way);
+    }
+    public void breath(){
+        System.out.println("Breath with lungs.");
     }
 }
