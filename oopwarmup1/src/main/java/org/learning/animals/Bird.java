@@ -2,9 +2,9 @@ package org.learning.animals;
 
 import com.sun.org.apache.xpath.internal.SourceTree;
 
-public class Birds extends Animal implements Abilities{
+public class Bird extends Animal implements Abilities{
 
-    public Birds(String name, Long tall, Long weight, String cover, String limbs, Integer lifeExpectancy, String habitat) {
+    public Bird(String name, Long tall, Long weight, String cover, String limbs, Integer lifeExpectancy, String habitat) {
         this.name = name;
         this.tall = tall;
         this.weight = weight;
@@ -14,13 +14,13 @@ public class Birds extends Animal implements Abilities{
         this.habitat = "forest";
     }
 
-    public void feeding(){
+    public void feed(){
         System.out.println("Feeding source: grass, roots, insects");
     }
-    public void moving(){
+    public void move(){
         System.out.println("Flying with help " + this.limbs + ". Also can walk." + " Live in " + habitat);
     }
-    public void breathing(){
+    public void breath(){
         System.out.println("Breathing with lungs.");
     }
 }
