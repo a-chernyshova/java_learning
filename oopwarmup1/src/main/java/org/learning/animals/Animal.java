@@ -1,6 +1,6 @@
 package org.learning.animals;
 
-public class Animal {
+public abstract class Animal {
     String name;
     Long tall;
     Long weight;
