@@ -12,13 +12,13 @@ public class Mammals extends Animal implements Abilities {
         this.habitat = "everywhere";
     }
 
-    public void feeding(){
+    public void feed(){
         System.out.println("Feeding: grass or predator.");
     }
-    public void moving(){
+    public void move(){
         System.out.println("Walking with help " + this.limbs + ". Live in " + habitat);
     }
-    public void breathing(){
+    public void breath(){
         System.out.println("Breath with lungs.");
     }
 }

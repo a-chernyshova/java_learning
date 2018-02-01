@@ -12,13 +12,13 @@ public class Reptiles extends Animal implements Abilities {
         this.habitat = habitat;
     }
 
-    public void feeding(){
+    public void feed(){
         System.out.println("Feeding source: grass and insects.");
     }
-    public void moving(){
+    public void move(){
         System.out.println("Walking with help " + this.limbs + ". Live in " + habitat);
     }
-    public void breathing(){
+    public void breath(){
         System.out.println("Reptiles breath with lungs.");
     }
 }

@@ -4,36 +4,36 @@ public class App
 {
     public static void main( String[] args )
     {
-        Animal animal = new Animal("Bear", 123L, 150L, "fur", "limbs", 30, "forest");
-        animal.getAnimal();
+        Mammals bear = new Mammals("Bear", 123L, 150L, "fur", "limbs", 30, "forest");
+        bear.getAnimal();
 
-        Birds bird = new Birds("Pigeon", 10L, 1L, "xxx", "yyy", 1, "forest");
+        Bird bird = new Bird("Pigeon", 10L, 1L, "xxx", "yyy", 1, "forest");
         bird.getAnimal();
-        bird.feeding();
-        bird.speaking("Kurlyk-kurlyk");
-        bird.moving();
-        bird.proliferation("eggs");
+        bird.feed();
+        bird.speak("Kurlyk-kurlyk");
+        bird.move();
+        bird.reproduce("eggs");
 
         Fish fish = new Fish("Pike", 80L, 8L, "cover", "limbs", 4, "river");
         fish.getAnimal();
-        fish.feeding();
-        fish.speaking("nothing");
-        fish.moving();
-        fish.proliferation("caviar");
+        fish.feed();
+        fish.speak("nothing");
+        fish.move();
+        fish.reproduce("caviar");
 
         Reptiles reptile = new Reptiles("Lizard", 100L, 5L, "scin", "pows", 10,
                 "somewhere");
         reptile.getAnimal();
-        reptile.feeding();
-        reptile.speaking("khhhhh");
-        reptile.moving();
-        reptile.proliferation("eggs");
+        reptile.feed();
+        reptile.speak("khhhhh");
+        reptile.move();
+        reptile.reproduce("eggs");
 
         Mammals cat = new Mammals("Cat", 40L, 5L, "fur", "paws", 15, "home");
         cat.getAnimal();
-        cat.feeding();
-        cat.speaking("Myau");
-        cat.moving();
-        cat.proliferation("live birth (kitten)");
+        cat.feed();
+        cat.speak("Myau");
+        cat.move();
+        cat.reproduce("live birth (kitten)");
     }
 }

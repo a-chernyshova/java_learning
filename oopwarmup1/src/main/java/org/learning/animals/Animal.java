@@ -25,10 +25,10 @@ public abstract class Animal {
         System.out.println("\n" + name + "\nHabitat: " + habitat + "\nTall average :" + tall + ", weight average: " +
         weight + ".\n" + "Covered with: " + cover + ".\nAverage of life expectancy: " + lifeExpectancy);
     }
-    public void speaking(String sound){
+    public void speak(String sound){
         System.out.println("It says: " + sound );
     }
-    public void proliferation(String way){
+    public void reproduce(String way){
         System.out.println("Creating childs: " + way);
     }
 }
