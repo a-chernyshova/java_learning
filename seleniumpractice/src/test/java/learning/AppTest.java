@@ -16,11 +16,14 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class AppTest {
-    WebDriver chromeDriver = new ChromeDriver();
 
-    //@BeforeClass
-    //public void runDriver(){ WebDriver chromeDriver = new ChromeDriver();}ChromeDriver
-    //WebDriver firefoxDriver = new FirefoxDriver();
+    protected WebDriver chromeDriver;
+
+    @BeforeClass(alwaysRun = true)
+    public void setUp() {
+        chromeDriver = new ChromeDriver();
+        //WebDriver firefoxDriver = new FirefoxDriver();
+    }
 
     @Test(enabled = false)
     public void loginFailTest(){
@@ -70,6 +73,7 @@ public class AppTest {
         lastSaved.findElement(By.className("js-message-snippet-sender")).click();
         chromeDriver.findElement(By.className("ns-view-compose-action-buttons")).click();
         //chromeDriver.findElement(By.className("mail-Done-Title")).getAttribute("");
+        // TODO: assert if mail was sent
     }
 
     @Test(dependsOnMethods = {"sendDraftTest"})
