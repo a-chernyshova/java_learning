@@ -6,19 +6,22 @@ public class App
     {
         Mammals bear = new Mammals("Bear", 123L, 150L, "fur", "limbs", 30, "forest");
         bear.getAnimal();
+        bear.breath();
 
         Bird bird = new Bird("Pigeon", 10L, 1L, "xxx", "yyy", 1, "forest");
         bird.getAnimal();
         bird.feed();
+        bird.breath();
         bird.speak("Kurlyk-kurlyk");
-        bird.move();
+        bird.fly();
         bird.reproduce("eggs");
 
         Fish fish = new Fish("Pike", 80L, 8L, "cover", "limbs", 4, "river");
         fish.getAnimal();
         fish.feed();
+        fish.breath();
         fish.speak("nothing");
-        fish.move();
+        fish.swim();
         fish.reproduce("caviar");
 
         Reptiles reptile = new Reptiles("Lizard", 100L, 5L, "scin", "pows", 10,

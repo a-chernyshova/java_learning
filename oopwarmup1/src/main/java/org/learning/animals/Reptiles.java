@@ -1,6 +1,6 @@
 package org.learning.animals;
 
-public class Reptiles extends Animal implements Abilities {
+public class Reptiles extends Animal {
 
     public Reptiles(String name, Long tall, Long weight, String cover, String limbs, Integer lifeExpectancy, String habitat) {
         this.name = name;
@@ -17,8 +17,5 @@ public class Reptiles extends Animal implements Abilities {
     }
     public void move(){
         System.out.println("Walking with help " + this.limbs + ". Live in " + habitat);
-    }
-    public void breath(){
-        System.out.println("Reptiles breath with lungs.");
     }
 }

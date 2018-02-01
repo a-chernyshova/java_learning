@@ -1,6 +1,6 @@
 package org.learning.animals;
 
-public class Fish extends Animal implements Abilities {
+public class Fish extends Animal implements Swimmable {
 
     public Fish(String name, Long tall, Long weight, String cover, String limbs, Integer lifeExpectancy, String habitat) {
         this.name = name;
@@ -19,6 +19,10 @@ public class Fish extends Animal implements Abilities {
         System.out.println("Swimming with help " + this.limbs + ". Live in " + habitat);
     }
     public void breath(){
-        System.out.println("Breathing with gills.");
+        System.out.println("Breath with gills.");
+    }
+
+    public void swim() {
+        System.out.println("Fish can swimm.");
     }
 }
