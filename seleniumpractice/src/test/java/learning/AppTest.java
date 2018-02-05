@@ -20,11 +20,11 @@ import java.util.concurrent.TimeUnit;
 
 public class AppTest {
 
-    private static String log = "correct_login";
-    private static String pass = "correct_pass";
-    private static String address = "address@gmail.com";
-    private static String subject = "Selenium webdriver";
-    private static String text = "\"The primary new feature in Selenium 2.0 is the integration of the WebDriver API. " +
+    private static final String LOG = "correct_login";
+    private static final String PASS = "correct_pass";
+    private static final String ADDRESS = "address@gmail.com";
+    private static final String SUBJECT = "Selenium webdriver";
+    private static final String TEXT = "\"The primary new feature in Selenium 2.0 is the integration of the WebDriver API. " +
             "WebDriver is designed to provide a simpler, more concise programming interface in addition to addressing " +
             "some limitations in the Selenium-RC API. /nSelenium-WebDriver was developed to better support dynamic " +
             "web pages where elements of a page may change without the page itself being reloaded. /nWebDriver’s " +
@@ -40,23 +40,23 @@ public class AppTest {
         //WebDriver firefoxDriver = new FirefoxDriver();
     }
 
-    public String authorization(String log, String pass){
+    public String authorization(String LOG, String PASS){
         chromeDriver.get("https://www.yandex.ru/");
         WebElement loginDiv = chromeDriver.findElement(By.className("desk-notif"));
-        loginDiv.findElement(By.tagName("input")).sendKeys(log + Keys.TAB + pass + Keys.ENTER);
+        loginDiv.findElement(By.tagName("input")).sendKeys(LOG + Keys.TAB + PASS + Keys.ENTER);
         String winTitle = chromeDriver.getTitle();
         return winTitle;
     }
 
     @Test(enabled = true)
     public void loginFailTest(){
-        String winTitle = authorization(log, (pass + "123")); //incorrect pass
+        String winTitle = authorization(LOG, (PASS + "123")); //incorrect pass
         Assert.assertEquals(winTitle, "Авторизация");
     }
 
     @Test(dependsOnMethods = {"loginFailTest"})
     public void loginTest(){
-        String winTitle = authorization(log, pass);
+        String winTitle = authorization(LOG, PASS);
         Assert.assertEquals(winTitle, "Yandex.Mail");
     }
 
@@ -82,14 +82,14 @@ public class AppTest {
 
         //fill out mail form: address, subject, message body
         WebElement currentElement = chromeDriver.switchTo().activeElement();
-        currentElement.sendKeys(address + Keys.TAB + subject + Keys.TAB + text);
+        currentElement.sendKeys(ADDRESS + Keys.TAB + SUBJECT + Keys.TAB + TEXT);
 
         //save draft
         chromeDriver.findElement(By.cssSelector(".ns-view-folders a:last-child")).click();
         chromeDriver.findElement(By.className("_nb-modal-popup ")).findElement(By.tagName("button")).click();
 
-        Assert.assertEquals(findMailSubject(), subject);
-        Assert.assertEquals(findMailAddress(), address);
+        Assert.assertEquals(findMailSubject(), SUBJECT);
+        Assert.assertEquals(findMailAddress(), ADDRESS);
     }
 
     @Test(dependsOnMethods = {"createDraftTest"})
@@ -118,8 +118,8 @@ public class AppTest {
         WebElement lastSaved = chromeDriver.findElement(By.cssSelector(".ns-view-messages-wrap .ns-view-messages-item-wrap"));
         String title = lastSaved.findElement(By.className("mail-MessageSnippet-Item_subject")).findElement(By.tagName("span")).getAttribute("title");
         String email = lastSaved.findElement(By.className("mail-MessageSnippet-FromText")).getAttribute("title");
-        Assert.assertEquals(title, subject);
-        Assert.assertEquals(email, address);
+        Assert.assertEquals(title, SUBJECT);
+        Assert.assertEquals(email, ADDRESS);
     }
 
     @Test(dependsOnMethods = {"checkSentTest"})
