@@ -30,8 +30,8 @@ public class AppTest {
             "web pages where elements of a page may change without the page itself being reloaded. /nWebDriver’s " +
             "goal is to supply a well-designed object-oriented API that provides improved support for modern " +
             "advanced web-app testing problems.\"";
-    protected WebDriver chromeDriver;
-    protected WebDriverWait wait;
+    private WebDriver chromeDriver;
+    private WebDriverWait wait;
 
     @BeforeClass(alwaysRun = true)
     public void setUp() {
@@ -40,7 +40,7 @@ public class AppTest {
         //WebDriver firefoxDriver = new FirefoxDriver();
     }
 
-    public String authorization(String LOG, String PASS){
+    private String authorization(String LOG, String PASS){
         chromeDriver.get("https://www.yandex.ru/");
         WebElement loginDiv = chromeDriver.findElement(By.className("desk-notif"));
         loginDiv.findElement(By.tagName("input")).sendKeys(LOG + Keys.TAB + PASS + Keys.ENTER);
