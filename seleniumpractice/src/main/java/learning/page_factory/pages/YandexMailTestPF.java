@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 public class YandexMailTestPF {
     private WebDriver driver;
-    private static final String[] EMAIL_DATA = {"stasya.aska@gmail.com", "Selenium webdriver",
+    private static final String[] EMAIL_DATA = {"test@gmail.com", "Selenium webdriver",
             "The primary new feature in Selenium 2.0 is the integration of the WebDriver API. " +
             "WebDriver is designed to provide a simpler, more concise programming interface in addition to addressing " +
             "some limitations in the Selenium-RC API. \nSelenium-WebDriver was developed to better support dynamic " +
@@ -40,7 +40,7 @@ public class YandexMailTestPF {
     @DataProvider(name="loginCredentials")
     public Object[][] loginCredentials(){
         return new Object[][]{
-                {"nassy.kusaka", "letstestit"}
+                {"username", "password"}
         };
     }
 
