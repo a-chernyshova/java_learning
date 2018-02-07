@@ -1,5 +1,6 @@
 package learning.page_object.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -13,10 +14,16 @@ public class AbstractPage {
     protected AbstractPage(WebDriver driver){
         this.driver = driver;
     }
-    protected void waitForElementVisible(WebElement element){
-        new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(element));
+    protected void waitForElementPresent(By locator){
+        new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).
+                until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
     }
-    protected void waitForElementEnabled(WebElement element){
-        new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.elementToBeClickable(element));
+    protected void waitForElementVisible(By locator){
+        new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).
+                until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+    }
+    protected void waitForElementEnabled(By locator){
+        new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).
+                until(ExpectedConditions.elementToBeClickable(locator));
     }
 }
