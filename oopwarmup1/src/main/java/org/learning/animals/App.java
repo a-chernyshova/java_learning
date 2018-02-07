@@ -1,38 +1,48 @@
 package org.learning.animals;
 
+import org.learning.animals.builders.BirdBuilder;
+import org.learning.animals.builders.FishBuilder;
+import org.learning.animals.builders.MammalsBuilder;
+import org.learning.animals.builders.ReptilesBuilder;
+
 public class App
 {
     public static void main( String[] args )
     {
-        Mammals bear = new Mammals("Bear", 123L, 150L, "fur", "limbs", 30, "forest");
+        Mammals bear = new MammalsBuilder().addName("bear").addTall(100L).addWeight(100L).addCover("fur").
+                addSound("bu").addLifeExpectancy(15).build();
         bear.getAnimal();
         bear.breath();
 
-        Bird bird = new Bird("Pigeon", 10L, 1L, "xxx", "yyy", 1, "forest");
-        bird.getAnimal();
-        bird.feed();
-        bird.breath();
-        bird.speak("Kurlyk-kurlyk");
-        bird.fly();
-        bird.reproduce("eggs");
+        Bird pigeon = new BirdBuilder().addName("Pigeon").addTall(10L).addWeight(1L).addSound("kurlyk-kurlyk").
+                addLifeExpectancy(5).build();
+        pigeon.getAnimal();
+        pigeon.feed();
+        pigeon.breath();
+        pigeon.speak("Kurlyk-kurlyk");
+        pigeon.fly();
+        pigeon.reproduce("eggs");
 
-        Fish fish = new Fish("Pike", 80L, 8L, "cover", "limbs", 4, "river");
-        fish.getAnimal();
-        fish.feed();
-        fish.breath();
-        fish.speak("nothing");
-        fish.swim();
-        fish.reproduce("caviar");
+        Fish pike = new FishBuilder().addName("Pike").addTall(100L).addWeight(15L).addLifeExpectancy(5).
+                addSound("Keep silence").build();
+        pike.getAnimal();
+        pike.feed();
+        pike.breath();
+        pike.speak("nothing");
+        pike.swim();
+        pike.reproduce("caviar");
 
-        Reptiles reptile = new Reptiles("Lizard", 100L, 5L, "scin", "pows", 10,
-                "somewhere");
-        reptile.getAnimal();
-        reptile.feed();
-        reptile.speak("khhhhh");
-        reptile.move();
-        reptile.reproduce("eggs");
+        Reptiles lizard = new ReptilesBuilder().addName("Lizard").addTall(10L).addWeight(10L).addLifeExpectancy(5).
+                addSound("keep silence").build();
 
-        Mammals cat = new Mammals("Cat", 40L, 5L, "fur", "paws", 15, "home");
+        lizard.getAnimal();
+        lizard.feed();
+        lizard.speak("khhhhh");
+        lizard.move();
+        lizard.reproduce("eggs");
+
+        Mammals cat = new MammalsBuilder().addName("cat").addTall(15L).addWeight(20L).addSound("may-may").
+                addLifeExpectancy(15).build();
         cat.getAnimal();
         cat.feed();
         cat.speak("Myau");
