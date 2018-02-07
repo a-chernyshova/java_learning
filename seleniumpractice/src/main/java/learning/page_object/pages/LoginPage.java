@@ -11,8 +11,7 @@ public class LoginPage extends AbstractPage{
     public LoginPage(WebDriver driver){
         super(driver);
     }
-    public void fillLoginCredentials(String[] logpass){
-        driver.findElement(LOGIN_INPUT_LOCATOR).sendKeys(logpass[0] + Keys.TAB + logpass[1] + Keys.ENTER);
+    public void fillLoginCredentials(String log, String pass){
+        driver.findElement(LOGIN_INPUT_LOCATOR).sendKeys(log + Keys.TAB + pass + Keys.ENTER);
     }
 }
-

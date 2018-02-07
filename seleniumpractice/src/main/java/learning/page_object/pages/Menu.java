@@ -18,6 +18,7 @@ public class Menu extends AbstractPage{
         return CREATE_NEW_LETTER_LOCATOR;
     }
     public NewLetter openNewMailForm(){
+        waitForElementEnabled(CREATE_NEW_LETTER_LOCATOR);
         driver.findElement(CREATE_NEW_LETTER_LOCATOR).click();
         return new NewLetter(driver);
     }
@@ -37,6 +38,7 @@ public class Menu extends AbstractPage{
         driver.findElement(ACCOUNT_MENU_LOCATOR).click();
     }
     public void logoutSubmit(){
+        waitForElementEnabled(LOGOUT_LOCATOR);
         driver.findElement(LOGOUT_LOCATOR).click();
     }
 }

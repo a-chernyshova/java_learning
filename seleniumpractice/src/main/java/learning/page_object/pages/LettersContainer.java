@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 // The same module for draft, inbox, sent folders
-
 public class LettersContainer extends AbstractPage {
     public static final By LAST_MESSAGE_LOCATOR = By.cssSelector(".mail-MessagesList .ns-view-messages-item-wrap:first-child");
     public static final By CHOOSE_ALL_MESSAGE_LOCATOR = By.cssSelector(".mail-Toolbar-Item-Checkbox");
@@ -23,15 +22,20 @@ public class LettersContainer extends AbstractPage {
         return LAST_MESSAGE_LOCATOR;
     }
     public NewLetter openLastMessage(){
+        waitForElementEnabled(LAST_MESSAGE_LOCATOR);
         driver.findElement(LAST_MESSAGE_LOCATOR).click();
         return new NewLetter(driver);
     }
     public String getLastMessageSubject(){
-        String title = driver.findElement(LAST_MESSAGE_LOCATOR).findElement(MESSAGE_TITLE_LOCATOR).getAttribute("title");
+        waitForElementEnabled(LAST_MESSAGE_LOCATOR);
+        String title = driver.findElement(LAST_MESSAGE_LOCATOR).
+                findElement(MESSAGE_TITLE_LOCATOR).getAttribute("title");
         return title;
     }
     public String getLastMessageAddress(){
-        String email = driver.findElement(LAST_MESSAGE_LOCATOR).findElement(MESSAGE_ADDRESS_LOCATOR).getAttribute("title");
+        waitForElementEnabled(LAST_MESSAGE_LOCATOR);
+        String email = driver.findElement(LAST_MESSAGE_LOCATOR).
+                findElement(MESSAGE_ADDRESS_LOCATOR).getAttribute("title");
         return email;
     }
     public void chooseLastMessage(){

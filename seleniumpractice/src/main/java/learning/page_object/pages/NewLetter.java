@@ -19,6 +19,7 @@ public class NewLetter extends AbstractPage{
         return INPUT_FORM_LOCATOR;
     }
     public void fillNewLetterForm(String[] testData){
+        waitForElementPresent(INPUT_FORM_LOCATOR);
         WebElement currentElement = driver.switchTo().activeElement();
         currentElement.sendKeys(testData[0] + Keys.TAB + testData[1] + Keys.TAB + testData[2]);
     }
