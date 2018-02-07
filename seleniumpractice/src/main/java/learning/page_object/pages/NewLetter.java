@@ -5,8 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class NewLetter {
-    WebDriver driver;
+public class NewLetter extends AbstractPage{
     public static final By SAVE_CHANGES_BUTTON_LOCATOR = By.cssSelector("._nb-modal-popup button");
     public static final By DONT_SAVE_CHANGES_BUTTON_LOCATOR = By.linkText("Don't save");
     public static final By CANCEL_BUTTON_LOCATOR = By.linkText("Cancel");
@@ -14,7 +13,7 @@ public class NewLetter {
     public static final By INPUT_FORM_LOCATOR = By.className("mail-Compose-Field-Input");
 
     public NewLetter(WebDriver driver){
-        this.driver = driver;
+        super(driver);
     }
     public By getInputLocator(){
         return INPUT_FORM_LOCATOR;
@@ -26,7 +25,7 @@ public class NewLetter {
     public void saveDraft(){
         driver.findElement(SAVE_CHANGES_BUTTON_LOCATOR).click();
     }
-    public void discardChages(){
+    public void discardChanges(){
         driver.findElement(DONT_SAVE_CHANGES_BUTTON_LOCATOR).click();
     }
     public void goBackToDraft(){

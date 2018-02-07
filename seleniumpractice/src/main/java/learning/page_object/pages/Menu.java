@@ -1,11 +1,9 @@
 package learning.page_object.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-public class Menu {
-    WebDriver driver;
+public class Menu extends AbstractPage{
     public static final By INBOX_LOCATOR = By.linkText("Inbox");
     public static final By SENT_LOCATOR = By.linkText("Sent");
     public static final By DRAFT_LOCATOR = By.cssSelector(".ns-view-folders a:last-child");
@@ -14,7 +12,7 @@ public class Menu {
     public static final By LOGOUT_LOCATOR = By.linkText("Log out");
 
     public Menu(WebDriver driver){
-        this.driver = driver;
+        super(driver);
     }
     public By getCreateButtonLocator(){
         return CREATE_NEW_LETTER_LOCATOR;

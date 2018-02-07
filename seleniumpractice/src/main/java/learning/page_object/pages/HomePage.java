@@ -1,17 +1,14 @@
 package learning.page_object.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WebDriver;
 
-public class HomePage {
-    WebDriver driver;
+public class HomePage extends AbstractPage{
     public static final By SEARCH_INPUT_LOCATOR = By.cssSelector(".search.2 .input__control");
     public static final By RUN_SEARCH_LOCATOR = By.cssSelector("search2_button");
 
     public HomePage(WebDriver driver){
-        this.driver = driver;
+        super(driver);
     }
     public void open(){
         driver.get("https://www.yandex.ru/");

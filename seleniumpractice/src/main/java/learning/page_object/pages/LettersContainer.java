@@ -2,13 +2,10 @@ package learning.page_object.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 // The same module for draft, inbox, sent folders
 
-public class LettersContainer {
-    WebDriver driver;
+public class LettersContainer extends AbstractPage {
     public static final By LAST_MESSAGE_LOCATOR = By.cssSelector(".mail-MessagesList .ns-view-messages-item-wrap:first-child");
     public static final By CHOOSE_ALL_MESSAGE_LOCATOR = By.cssSelector(".mail-Toolbar-Item-Checkbox");
     public static final By MESSAGE_TITLE_LOCATOR = By.cssSelector(".mail-MessageSnippet-Item_subject span");
@@ -20,7 +17,7 @@ public class LettersContainer {
     public static final By DELETE_BUTTON_LOCATOR = By.className("mail-Toolbar-Item_delete");
 
     public LettersContainer(WebDriver driver){
-        this.driver = driver;
+        super(driver);
     }
     public By getLastMessageLocator(){
         return LAST_MESSAGE_LOCATOR;
