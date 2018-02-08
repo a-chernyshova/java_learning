@@ -1,5 +1,6 @@
 package learning.page_object.pages;
 
+import learning.page_object.utils.WebDriverSingleton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,8 +12,8 @@ public class AbstractPage {
     public static final int WAIT_FOR_ELEMENT_TIMEOUT_SECONDS = 10;
     protected WebDriver driver;
 
-    protected AbstractPage(WebDriver driver){
-        this.driver = driver;
+    protected AbstractPage(){
+        this.driver = WebDriverSingleton.getWebdriverInstance();
     }
     protected void waitForElementPresent(By locator){
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).

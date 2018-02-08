@@ -15,16 +15,13 @@ public class LettersContainer extends AbstractPage {
     public static final By IS_EMPTY_LIST_LOCATOR = By.className("ns-view-messages-empty");
     public static final By DELETE_BUTTON_LOCATOR = By.className("mail-Toolbar-Item_delete");
 
-    public LettersContainer(WebDriver driver){
-        super(driver);
-    }
     public By getLastMessageLocator(){
         return LAST_MESSAGE_LOCATOR;
     }
     public NewLetter openLastMessage(){
         waitForElementEnabled(LAST_MESSAGE_LOCATOR);
         driver.findElement(LAST_MESSAGE_LOCATOR).click();
-        return new NewLetter(driver);
+        return new NewLetter();
     }
     public String getLastMessageSubject(){
         waitForElementEnabled(LAST_MESSAGE_LOCATOR);

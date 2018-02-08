@@ -1,6 +1,6 @@
 package learning.page_object.pages;
 
-import org.openqa.selenium.chrome.ChromeDriver;
+import learning.page_object.utils.WebDriverSingleton;
 import org.openqa.selenium.*;
 
 import org.testng.Assert;
@@ -11,7 +11,6 @@ import org.testng.annotations.AfterClass;
 import java.util.concurrent.TimeUnit;
 
 public class YandexMailTest {
-    private WebDriver driver;
     private static final String[] EMAIL_DATA = {"test@gmail.com", "Selenium webdriver",
             "The primary new feature in Selenium 2.0 is the integration of the WebDriver API. " +
             "WebDriver is designed to provide a simpler, more concise programming interface in addition to addressing " +
@@ -20,27 +19,19 @@ public class YandexMailTest {
             "goal is to supply a well-designed object-oriented API that provides improved support for modern " +
             "advanced web-app testing problems."};
 
-    @BeforeClass(description="Start browser")
-    public void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-    }
-
     private String authorization(String log, String pass){
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage();
         homePage.open();
 
-        LoginPage logForm = new LoginPage(driver);
+        LoginPage logForm = new LoginPage();
         logForm.fillLoginCredentials(log, pass);
-        return driver.getTitle();
+        return logForm.returnTitle();
     }
 
     @DataProvider(name="loginCredentials")
     public Object[][] loginCredentials(){
         return new Object[][]{
-                {"username", "password"}
+                {"email-address", "password"}
         };
     }
 
@@ -57,20 +48,20 @@ public class YandexMailTest {
     }
 
     public String findMailSubject(){
-        LettersContainer mailList = new LettersContainer(driver);
+        LettersContainer mailList = new LettersContainer();
         String mailSubject = mailList.getLastMessageSubject();
         return mailSubject;
     }
 
     public String findMailAddress(){
-        LettersContainer mailList = new LettersContainer(driver);
+        LettersContainer mailList = new LettersContainer();
         String addressee = mailList.getLastMessageAddress();
         return addressee;
     }
 
     @Test(dependsOnMethods = {"loginTest"})
     public void createDraftTest(){
-        Menu mailBoxMenu = new Menu(driver);
+        Menu mailBoxMenu = new Menu();
         learning.page_object.pages.NewLetter newLetterForm = mailBoxMenu.openNewMailForm();
         newLetterForm.fillNewLetterForm(EMAIL_DATA);
         mailBoxMenu.openDraftsFolder();
@@ -82,7 +73,7 @@ public class YandexMailTest {
 
     @Test(dependsOnMethods = {"createDraftTest"})
     public void sendDraftTest(){
-        LettersContainer drafts = new LettersContainer(driver);
+        LettersContainer drafts = new LettersContainer();
         learning.page_object.pages.NewLetter currentLetter = drafts.openLastMessage();
         learning.page_object.pages.SendResultPage result = currentLetter.sendLetter();
         Assert.assertEquals(result.getStatus(), "Message sent successfully.");
@@ -90,7 +81,7 @@ public class YandexMailTest {
 
     @Test(dependsOnMethods = {"sendDraftTest"})
     public void checkDraftTest(){
-        Menu mailBoxMenu = new Menu(driver);
+        Menu mailBoxMenu = new Menu();
         LettersContainer lettersList = mailBoxMenu.openDraftsFolder();
         try{
             lettersList.getIsEmptyListLocator();
@@ -101,7 +92,7 @@ public class YandexMailTest {
 
     @Test(dependsOnMethods = {"sendDraftTest"})
     public void checkSentTest(){
-        Menu mailBoxMenu = new Menu(driver);
+        Menu mailBoxMenu = new Menu();
         LettersContainer mailList = mailBoxMenu.openSentFolder();
         String title = mailList.getLastMessageSubject();
         String email = mailList.getLastMessageAddress();
@@ -112,7 +103,7 @@ public class YandexMailTest {
 
     @Test(description = "clean sent folder", dependsOnMethods = {"checkSentTest"})
     public void cleanSentFolder(){
-        LettersContainer mailList = new LettersContainer(driver);
+        LettersContainer mailList = new LettersContainer();
         mailList.chooseAllMessage();
         mailList.pushDelete();
         try{
@@ -124,14 +115,14 @@ public class YandexMailTest {
 
     @Test(dependsOnMethods = {"cleanSentFolder"})
     public void logoutTest(){
-        Menu mailBoxMenu = new Menu(driver);
+        Menu mailBoxMenu = new Menu();
         mailBoxMenu.openAccountMenu();
         mailBoxMenu.logoutSubmit();
-        Assert.assertEquals(driver.getTitle(), "Яндекс");
+        Assert.assertEquals(mailBoxMenu.returnTitle(), "Яндекс");
     }
 
     @AfterClass(description = "close browser")
     public void closure(){
-        driver.quit();
+        WebDriverSingleton.kill();
     }
 }
