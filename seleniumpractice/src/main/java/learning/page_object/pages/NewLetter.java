@@ -12,8 +12,6 @@ public class NewLetter extends AbstractPage{
     public static final By SEND_BUTTON_LOCATOR = By.cssSelector(".mail-Compose-From ._nb-action-button");
     public static final By INPUT_FORM_LOCATOR = By.className("mail-Compose-Field-Input");
 
-//    public NewLetter(WebDriver driver){super(driver);}
-
     public By getInputLocator(){
         return INPUT_FORM_LOCATOR;
     }
