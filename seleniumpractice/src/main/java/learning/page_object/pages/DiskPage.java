@@ -14,7 +14,7 @@ public class DiskPage extends AbstractPage {
     public static final By FILE_LOCATOR = By.cssSelector(".ui-draggable[title='test.txt']");
 
     public DiskPage uploadFile(String pathToFile){
-        waitForElementEnabled(By.className("upload-button__attach"));
+        //waitForElementEnabled(By.className("upload-button__attach"));
         driver.findElement(By.className("upload-button__attach")).sendKeys(pathToFile);
         waitForElementEnabled(By.className("b-dialog-upload__button-close"));
         driver.findElement(By.className("b-dialog-upload__button-close")).click();
@@ -34,8 +34,9 @@ public class DiskPage extends AbstractPage {
         driver.findElement(OPEN_CREATE_OPTIONS_LOCATOR).click();
         waitForElementEnabled(CREATE_FOLDER);
         driver.findElement(CREATE_FOLDER).click();
+        waitForElementEnabled(By.className("ns-view-aside"));
         WebElement currentElement = driver.switchTo().activeElement();
-        waitForElementEnabled(By.className("nb-panel__content"));
+        waitForElementVisible(By.className("nb-panel__content"));
         currentElement.sendKeys(filename + Keys.ENTER);
         waitForElementEnabled(FOLDER_LOCATOR);
         return this;

@@ -31,7 +31,7 @@ public class YandexMailTest {
     @DataProvider(name="loginCredentials")
     public Object[][] loginCredentials(){
         return new Object[][]{
-                {"nassy.kusaka", "awesome1"}
+                {"login", "password"}
         };
     }
 
