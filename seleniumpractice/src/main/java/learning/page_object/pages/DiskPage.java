@@ -12,11 +12,13 @@ public class DiskPage extends AbstractPage {
     public static final By CONTENT_DIV_LOCATOR = By.className("b-content");
     public static final By FOLDER_LOCATOR = By.cssSelector(".ui-droppable[title='test']");
     public static final By FILE_LOCATOR = By.cssSelector(".ui-draggable[title='test.txt']");
+    public static final By REMOVE_BUTTON = By.cssSelector(".nb-panel__footer .nb-button[title='Delete']");
 
     public DiskPage uploadFile(String pathToFile){
         //waitForElementEnabled(By.className("upload-button__attach"));
         driver.findElement(By.className("upload-button__attach")).sendKeys(pathToFile);
-        waitForElementEnabled(By.className("b-dialog-upload__button-close"));
+        waitForElementEnabled(By.className("b-dialog-upload__content"));
+        waitForElementVisible(By.className("b-dialog-upload__button-close"));
         driver.findElement(By.className("b-dialog-upload__button-close")).click();
         waitForElementEnabled(CONTENT_DIV_LOCATOR);
         return this;
@@ -58,6 +60,22 @@ public class DiskPage extends AbstractPage {
         } catch(Exception e) {
             e.printStackTrace();
             return false;
+        }
+    }
+    public Boolean removeFolder(){
+        waitForElementEnabled(By.id("/disk"));
+        driver.findElement(By.className("crumbs__path")).findElement(By.xpath("div[2]/a")).click();
+        waitForElementVisible(FOLDER_LOCATOR);
+        driver.findElement(FOLDER_LOCATOR).click();
+        waitForElementEnabled(By.cssSelector(".nb-panel__footer "));
+        driver.findElement(REMOVE_BUTTON).click();
+        waitForElementStateLess(By.className("ns-view-loaderPortion"));
+        try{
+            driver.findElement(FOLDER_LOCATOR);
+            return false;
+        } catch (Exception e){
+            e.printStackTrace();
+            return true;
         }
     }
     public String returnTitle(){

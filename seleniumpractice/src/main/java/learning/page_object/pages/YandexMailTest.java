@@ -148,6 +148,11 @@ public class YandexMailTest {
         DiskPage disk = new DiskPage();
         Assert.assertTrue(disk.openFolder());
     }
+    @Test(dependsOnMethods ={"openFolderTest"}, description = "Remove test folder from disk")
+    public void removeFolder(){
+        DiskPage disk = new DiskPage();
+        Assert.assertTrue(disk.removeFolder());
+    }
     @AfterClass(description = "close browser")
     public void closure(){
         WebDriverSingleton.kill();

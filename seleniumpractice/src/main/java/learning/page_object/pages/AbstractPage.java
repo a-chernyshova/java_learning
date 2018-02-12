@@ -27,4 +27,8 @@ public class AbstractPage {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).
                 until(ExpectedConditions.elementToBeClickable(locator));
     }
+    protected void waitForElementStateLess(By locator){
+        WebElement elem = driver.findElement(locator);
+        new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.stalenessOf(elem));
+    }
 }
