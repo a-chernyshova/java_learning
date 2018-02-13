@@ -7,24 +7,24 @@ import org.openqa.selenium.support.FindBy;
 
 public class MenuPF extends AbstractPagePF{
     @FindBy(linkText = "Inbox")
-    public WebElement inboxFolder;
+    private WebElement inboxFolder;
 
     @FindBy(linkText = "Sent")
-    public WebElement sentFolder;
+    private WebElement sentFolder;
 
     @FindBy(css = ".ns-view-folders a:last-child")
-    public WebElement draftFolder;
+    private WebElement draftFolder;
 
     public static final By CREATE_NEW_LETTER_LOCATOR = By.cssSelector(".mail-ComposeButton");
 
     @FindBy(css = ".mail-ComposeButton")
-    WebElement createNewLetter;
+    private WebElement createNewLetter;
 
-    public static final By ACCOUNT_MENU_LOCATOR = By.cssSelector(".mail-User-Name");
+    @FindBy(css=".mail-User-Name")
+    private WebElement account_menu;
 
     @FindBy(linkText = "Log out")
-    WebElement logoutButton;
-
+    private WebElement logoutButton;
 
     public MenuPF(WebDriver driver){
         super(driver);
@@ -50,7 +50,7 @@ public class MenuPF extends AbstractPagePF{
         return new LettersContainerPF(driver);
     }
     public void openAccountMenu(){
-        driver.findElement(ACCOUNT_MENU_LOCATOR).click();
+        account_menu.click();
     }
     public MenuPF logoutSubmit(){
         waitForElementEnabled(logoutButton);

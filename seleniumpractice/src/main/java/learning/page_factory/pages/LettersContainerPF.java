@@ -11,31 +11,32 @@ public class LettersContainerPF extends AbstractPagePF {
     public static final By LAST_MESSAGE_LOCATOR = By.cssSelector(".mail-MessagesList .ns-view-messages-item-wrap:first-child");
 
     @FindBy(css = ".mail-MessagesList .ns-view-messages-item-wrap:first-child")
-    public WebElement lastMessage;
+    private WebElement lastMessage;
 
     @FindBy(css = ".mail-Toolbar-Item-Checkbox")
-    public WebElement chooseAllMessages;
+    private WebElement chooseAllMessages;
 
     public static final By MESSAGE_TITLE_LOCATOR = By.cssSelector(".mail-MessageSnippet-Item_subject span");
+
     @FindBy(css = ".mail-MessageSnippet-Item_subject span")
-    public WebElement messageTitle;
+    private WebElement messageTitle;
 
     public static final By MESSAGE_ADDRESS_LOCATOR = By.cssSelector(".mail-MessageSnippet-Content .mail-MessageSnippet-FromText");
     @FindBy(css = ".mail-MessageSnippet-Content .mail-MessageSnippet-FromText")
-    public WebElement messageAddress;
+    private WebElement messageAddress;
 
     public static final By CHOOSE_MESSAGE_LOCATOR = By.cssSelector("._nb-checkbox-flag");
     @FindBy(css = "._nb-checkbox-flag")
-    public WebElement chooseMessage;
+    private WebElement chooseMessage;
 
     @FindBy(linkText = "Forward")
-    public WebElement forwardButton;
+    private WebElement forwardButton;
 
     @FindBy(className = "ns-view-messages-empty")
-    public WebElement isEmpty;
+    private WebElement isEmpty;
 
     @FindBy(css = ".mail-Toolbar-Item_delete")
-    public WebElement deleteButton;
+    private WebElement deleteButton;
 
     public LettersContainerPF(WebDriver driver){
         super(driver);
@@ -59,7 +60,7 @@ public class LettersContainerPF extends AbstractPagePF {
         return email;
     }
     public void chooseLastMessage(){
-        driver.findElement(LAST_MESSAGE_LOCATOR).findElement(CHOOSE_MESSAGE_LOCATOR).click();
+        lastMessage.findElement(CHOOSE_MESSAGE_LOCATOR).click();
     }
     public WebElement getIsEmptyListLocator(){
         return isEmpty;

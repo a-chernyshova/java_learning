@@ -1,6 +1,5 @@
 package learning.page_factory.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,10 +7,10 @@ import org.openqa.selenium.support.FindBy;
 public class HomePagePF extends AbstractPagePF{
 
     @FindBy(css=".search.2 .input__control")
-    WebElement searchInput;
+    private WebElement searchInput;
 
     @FindBy(css = ".search2_button")
-    WebElement searchSubmitButton;
+    private WebElement searchSubmitButton;
 
     public HomePagePF(WebDriver driver){
         super(driver);
