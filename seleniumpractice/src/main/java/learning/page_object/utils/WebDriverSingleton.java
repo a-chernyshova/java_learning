@@ -42,7 +42,7 @@ public class WebDriverSingleton {
             try{
                 instance.quit();
             }catch (Exception e){
-                //logger.error("Cannot kill browser");
+                Logger.error("Cannot kill browser");
                 System.out.println("Cannot kill browser");
             }finally{
                 instance = null;
@@ -50,7 +50,6 @@ public class WebDriverSingleton {
         }
     }
     public void takeScreenshot() {
-        //WebDriver driver = WebDriverSingleton.getWebDriverInstance();
         File screenshot = ((TakesScreenshot) instance).getScreenshotAs(OutputType.FILE);
         try {
             String screenshotName = SCREENSHOTS_NAME_TPL + System.nanoTime();

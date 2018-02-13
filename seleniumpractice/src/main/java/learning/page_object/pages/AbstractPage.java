@@ -1,5 +1,6 @@
 package learning.page_object.pages;
 
+import learning.page_object.utils.Logger;
 import learning.page_object.utils.WebDriverSingleton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -37,5 +38,10 @@ public class AbstractPage {
 
     protected void unHighlightElement(By locator) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='0px'", driver.findElement(locator));
+    }
+
+    protected void sleep(){
+        ((JavascriptExecutor)driver).executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], 5000);");
+        Logger.info("Sleep timer is in progress...");
     }
 }

@@ -22,6 +22,7 @@ public class DiskPage extends AbstractPage {
         Screenshoter.takeScreenshot();
         //waitForElementEnabled(By.className("upload-button__attach"));
         driver.findElement(By.className("upload-button__attach")).sendKeys(pathToFile);
+        sleep();
         waitForElementEnabled(By.className("b-dialog-upload__content"));
         waitForElementVisible(By.className("b-dialog-upload__button-close"));
         driver.findElement(By.className("b-dialog-upload__button-close")).click();
@@ -90,7 +91,7 @@ public class DiskPage extends AbstractPage {
         driver.findElement(FOLDER_LOCATOR).click();
         waitForElementEnabled(By.cssSelector(".nb-panel__footer "));
         driver.findElement(REMOVE_BUTTON).click();
-        waitForElementStateLess(By.className("ns-view-loaderPortion"));
+        sleep();
         try{
             driver.findElement(FOLDER_LOCATOR);
             Screenshoter.takeScreenshot();
