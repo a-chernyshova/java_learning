@@ -4,10 +4,12 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class WebDriverSingleton {
@@ -26,7 +28,8 @@ public class WebDriverSingleton {
     private static WebDriver init(){
         WebDriver driver = null;
         try{
-            driver = new ChromeDriver();
+            driver = new RemoteWebDriver(new URL("http://192.168.0.23:4444/wd/hub"), DesiredCapabilities.chrome());
+            //driver = new ChromeDriver();
         }catch (Exception e){
             System.out.println("Can't open browser");
             e.printStackTrace();
