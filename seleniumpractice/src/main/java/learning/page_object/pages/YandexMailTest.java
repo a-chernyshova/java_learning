@@ -1,14 +1,11 @@
 package learning.page_object.pages;
 
 import learning.page_object.utils.WebDriverSingleton;
-import org.openqa.selenium.*;
-
+import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.annotations.AfterClass;
-import java.util.concurrent.TimeUnit;
 
 public class YandexMailTest {
     private static final String[] EMAIL_DATA = {"test@gmail.com", "Selenium webdriver",
@@ -31,7 +28,7 @@ public class YandexMailTest {
     @DataProvider(name="loginCredentials")
     public Object[][] loginCredentials(){
         return new Object[][]{
-                {"login", "password"}
+                {"username", "password"}
         };
     }
 

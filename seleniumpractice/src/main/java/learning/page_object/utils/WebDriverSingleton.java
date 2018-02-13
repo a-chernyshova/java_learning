@@ -1,13 +1,18 @@
 package learning.page_object.utils;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class WebDriverSingleton {
     private static WebDriver instance;
+    private static final String SCREENSHOTS_NAME_TPL = "screenshots/scr";
 
     private WebDriverSingleton(){}
 
@@ -44,5 +49,16 @@ public class WebDriverSingleton {
             }
         }
     }
-
+    public void takeScreenshot() {
+        //WebDriver driver = WebDriverSingleton.getWebDriverInstance();
+        File screenshot = ((TakesScreenshot) instance).getScreenshotAs(OutputType.FILE);
+        try {
+            String screenshotName = SCREENSHOTS_NAME_TPL + System.nanoTime();
+            File copy = new File(screenshotName + ".png");
+            FileUtils.copyFile(screenshot, copy);
+            Logger.info("Saved screenshot: " + screenshotName);
+        } catch (IOException e) {
+            Logger.error("Failed to make screenshot");
+        }
+    }
 }
