@@ -46,7 +46,7 @@ public class YandexMailTest {
         Assert.assertEquals(winTitle, "Yandex.Mail");
     }
 
-    @Test(enabled = false, dependsOnMethods = {"loginTest"})
+    @Test(enabled = true, dependsOnMethods = {"loginTest"})
     public void createDraftTest(){
         Menu mailBoxMenu = new Menu();
         learning.page_object.pages.NewLetter newLetterForm = mailBoxMenu.openNewMailForm();
@@ -58,7 +58,7 @@ public class YandexMailTest {
         Assert.assertEquals(new LettersContainer().getLastMessageAddress(), EMAIL_DATA[0]);
     }
 
-    @Test(enabled=false, dependsOnMethods = {"createDraftTest"})
+    @Test(enabled=true, dependsOnMethods = {"createDraftTest"})
     public void sendDraftTest(){
         LettersContainer drafts = new LettersContainer();
         learning.page_object.pages.NewLetter currentLetter = drafts.openLastMessage();
@@ -66,7 +66,7 @@ public class YandexMailTest {
         Assert.assertEquals(result.getStatus(), "Message sent successfully.");
     }
 
-    @Test(enabled = false, dependsOnMethods = {"sendDraftTest"})
+    @Test(enabled = true, dependsOnMethods = {"sendDraftTest"})
     public void checkDraftTest(){
         Menu mailBoxMenu = new Menu();
         LettersContainer lettersList = mailBoxMenu.openDraftsFolder();
@@ -77,7 +77,7 @@ public class YandexMailTest {
         };
     }
 
-    @Test(enabled = false, dependsOnMethods = {"sendDraftTest"})
+    @Test(enabled = true, dependsOnMethods = {"sendDraftTest"})
     public void checkSentTest(){
         Menu mailBoxMenu = new Menu();
         LettersContainer mailList = mailBoxMenu.openSentFolder();
@@ -88,7 +88,7 @@ public class YandexMailTest {
         Assert.assertEquals(email, EMAIL_DATA[0]);
     }
 
-    @Test(enabled = false, description = "clean sent folder", dependsOnMethods = {"checkSentTest"})
+    @Test(enabled = true, description = "clean sent folder", dependsOnMethods = {"checkSentTest"})
     public void cleanSentFolder(){
         LettersContainer mailList = new LettersContainer();
         mailList.chooseAllMessage();
@@ -100,7 +100,7 @@ public class YandexMailTest {
         };
     }
 
-    @Test(enabled = false, dependsOnMethods = {"cleanSentFolder"})
+    @Test(enabled = true, dependsOnMethods = {"cleanSentFolder"})
     public void logoutTest(){
         Menu mailBoxMenu = new Menu();
         mailBoxMenu.openAccountMenu();
@@ -108,38 +108,6 @@ public class YandexMailTest {
         Assert.assertEquals(mailBoxMenu.returnTitle(), "Яндекс");
     }
 
-    @Test(description = "open disk and create test folder", dependsOnMethods = {"loginTest"})
-    public void openDiskTest(){
-        Menu mailBoxMenu = new Menu();
-        DiskPage disk = mailBoxMenu.openDisk();
-        Assert.assertEquals(disk.returnTitle(), "Yandex.Disk");
-    }
-    @Test(dependsOnMethods = {"openDiskTest"})
-    public void createFolderTest(){
-        DiskPage disk = new DiskPage();
-        disk.createFolder("test");
-    }
-    @Test(enabled = true, dependsOnMethods = {"createFolderTest"})
-    public void uploadFileTest(){
-        DiskPage disk = new DiskPage();
-        disk.uploadFile("C:\\Users\\Anastasiia_Chernysho\\Documents\\test.txt");
-        Assert.assertTrue(disk.checkFileUploaded());
-    }
-    @Test(enabled = true, dependsOnMethods = {"uploadFileTest"})
-    public void dragFileToTest(){
-        DiskPage disk = new DiskPage();
-        disk.dragFileToFolder();
-    }
-    @Test(dependsOnMethods = {"dragFileToTest"})
-    public void openFolderTest(){
-        DiskPage disk = new DiskPage();
-        Assert.assertTrue(disk.openFolder());
-    }
-    @Test(dependsOnMethods ={"openFolderTest"}, description = "Remove test folder from disk")
-    public void removeFolder(){
-        DiskPage disk = new DiskPage();
-        Assert.assertTrue(disk.removeFolder());
-    }
     @AfterClass(description = "close browser")
     public void closure(){
         WebDriverSingleton.kill();
