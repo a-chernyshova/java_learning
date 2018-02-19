@@ -9,12 +9,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.concurrent.TimeUnit;
+
 public class AbstractPage {
     public static final int WAIT_FOR_ELEMENT_TIMEOUT_SECONDS = 10;
     protected WebDriver driver;
 
     protected AbstractPage(){
         this.driver = WebDriverSingleton.getWebdriverInstance();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
     protected void waitForElementPresent(By locator){
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).

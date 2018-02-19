@@ -1,10 +1,10 @@
 package learning.page_object.pages;
 
+import learning.page_object.pages.buisness_object.User;
 import learning.page_object.utils.WebDriverSingleton;
 import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class YandexMailTest {
@@ -16,31 +16,32 @@ public class YandexMailTest {
             "goal is to supply a well-designed object-oriented API that provides improved support for modern " +
             "advanced web-app testing problems."};
 
-    private String authorization(String log, String pass){
+    private String authorization(User user){
         HomePage homePage = new HomePage();
         homePage.open();
 
         LoginPage logForm = new LoginPage();
-        logForm.fillLoginCredentials(log, pass);
+        logForm.fillLoginCredentials(user);
+        return logForm.returnTitle();
+    }
+    private String incorrectAuthorization(User user){
+        HomePage homePage = new HomePage();
+        homePage.open();
+
+        LoginPage logForm = new LoginPage();
+        logForm.fillIncorrectLoginCredentials(user);
         return logForm.returnTitle();
     }
 
-    @DataProvider(name="loginCredentials")
-    public Object[][] loginCredentials(){
-        return new Object[][]{
-                {"username", "password"}
-        };
-    }
-
-    @Test(enabled = false, dataProvider = "loginCredentials",description="check logging in with incorrect credentials")
-    public void loginFailTest(String log, String pass){
-        String winTitle = authorization(log, (pass + "123")); //incorrect pass
+    @Test(enabled = true, description="check logging in with incorrect credentials")
+    public void loginFailTest(){
+        String winTitle = incorrectAuthorization(new User()); //incorrect pass
         Assert.assertEquals(winTitle, "Авторизация");
     }
 
-    @Test(dataProvider = "loginCredentials")
-    public void loginTest(String log, String pass){
-        String winTitle = authorization(log, pass);
+    @Test(dependsOnMethods = {"loginFailTest"})
+    public void loginTest(){
+        String winTitle = authorization(new User());
         Assert.assertEquals(winTitle, "Yandex.Mail");
     }
 
