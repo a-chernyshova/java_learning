@@ -1,4 +1,4 @@
-package learning.page_object.pages.buisness_object;
+package learning.page_object.buisness_object;
 
 public class User {
     private static final String PASSWORD = "password";

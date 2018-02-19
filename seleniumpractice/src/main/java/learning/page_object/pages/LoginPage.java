@@ -1,6 +1,6 @@
 package learning.page_object.pages;
 
-import learning.page_object.pages.buisness_object.User;
+import learning.page_object.buisness_object.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 

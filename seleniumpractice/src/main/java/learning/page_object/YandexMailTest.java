@@ -1,6 +1,7 @@
-package learning.page_object.pages;
+package learning.page_object;
 
-import learning.page_object.pages.buisness_object.User;
+import learning.page_object.buisness_object.User;
+import learning.page_object.pages.*;
 import learning.page_object.utils.WebDriverSingleton;
 import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
@@ -45,18 +46,6 @@ public class YandexMailTest {
         Assert.assertEquals(winTitle, "Yandex.Mail");
     }
 
-    public String findMailSubject(){
-        LettersContainer mailList = new LettersContainer();
-        String mailSubject = mailList.getLastMessageSubject();
-        return mailSubject;
-    }
-
-    public String findMailAddress(){
-        LettersContainer mailList = new LettersContainer();
-        String addressee = mailList.getLastMessageAddress();
-        return addressee;
-    }
-
     @Test(enabled = false, dependsOnMethods = {"loginTest"})
     public void createDraftTest(){
         Menu mailBoxMenu = new Menu();
@@ -65,8 +54,8 @@ public class YandexMailTest {
         mailBoxMenu.openDraftsFolder();
         newLetterForm.saveDraft();
 
-        Assert.assertEquals(findMailSubject(), EMAIL_DATA[1]);
-        Assert.assertEquals(findMailAddress(), EMAIL_DATA[0]);
+        Assert.assertEquals(new LettersContainer().getLastMessageSubject(), EMAIL_DATA[1]);
+        Assert.assertEquals(new LettersContainer().getLastMessageAddress(), EMAIL_DATA[0]);
     }
 
     @Test(enabled=false, dependsOnMethods = {"createDraftTest"})
