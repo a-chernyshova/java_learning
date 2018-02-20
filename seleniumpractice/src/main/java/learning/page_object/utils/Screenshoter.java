@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class Screenshoter {
     private static final String SCREENSHOT_NAME = "screenshot/screenshot_";
 
-    public static void takeScreenshot(){
+    private static void takeScreenshot(){
         WebDriver driver = WebDriverSingleton.getWebdriverInstance();
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
