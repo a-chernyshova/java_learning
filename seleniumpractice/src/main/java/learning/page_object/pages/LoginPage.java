@@ -15,8 +15,4 @@ public class LoginPage extends AbstractPage{
     public void fillIncorrectLoginCredentials(User user){
         driver.findElement(LOGIN_INPUT_LOCATOR).sendKeys(user.getLogin() + Keys.TAB + (user.getPassword() + "123") + Keys.ENTER);
     }
-
-    public String returnTitle(){
-        return driver.getTitle();
-    }
 }

@@ -1,7 +1,6 @@
 package learning.page_object.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 // The same module for draft, inbox, sent folders
 public class LettersContainer extends AbstractPage {
@@ -15,9 +14,6 @@ public class LettersContainer extends AbstractPage {
     public static final By IS_EMPTY_LIST_LOCATOR = By.className("ns-view-messages-empty");
     public static final By DELETE_BUTTON_LOCATOR = By.className("mail-Toolbar-Item_delete");
 
-    public By getLastMessageLocator(){
-        return LAST_MESSAGE_LOCATOR;
-    }
     public NewLetter openLastMessage(){
         waitForElementEnabled(LAST_MESSAGE_LOCATOR);
         driver.findElement(LAST_MESSAGE_LOCATOR).click();

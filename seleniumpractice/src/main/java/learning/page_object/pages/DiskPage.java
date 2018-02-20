@@ -104,7 +104,4 @@ public class DiskPage extends AbstractPage {
             return true;
         }
     }
-    public String returnTitle(){
-        return driver.getTitle();
-    }
 }

@@ -2,7 +2,6 @@ package learning.page_object.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class NewLetter extends AbstractPage{
@@ -12,9 +11,6 @@ public class NewLetter extends AbstractPage{
     public static final By SEND_BUTTON_LOCATOR = By.cssSelector(".mail-Compose-From ._nb-action-button");
     public static final By INPUT_FORM_LOCATOR = By.className("mail-Compose-Field-Input");
 
-    public By getInputLocator(){
-        return INPUT_FORM_LOCATOR;
-    }
     public void fillNewLetterForm(String[] testData){
         waitForElementPresent(INPUT_FORM_LOCATOR);
         WebElement currentElement = driver.switchTo().activeElement();

@@ -45,7 +45,4 @@ public class Menu extends AbstractPage{
         waitForElementEnabled(LOGOUT_LOCATOR);
         driver.findElement(LOGOUT_LOCATOR).click();
     }
-    public String returnTitle(){
-        return driver.getTitle();
-    }
 }

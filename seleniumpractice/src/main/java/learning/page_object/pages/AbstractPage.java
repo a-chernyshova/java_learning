@@ -47,4 +47,8 @@ public class AbstractPage {
         ((JavascriptExecutor)driver).executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], 5000);");
         Logger.info("Sleep timer is in progress...");
     }
+
+    public String returnTitle(){
+        return driver.getTitle();
+    }
 }
