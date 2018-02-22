@@ -5,3 +5,6 @@ jsonparser/target/*
 jsonparser/test-output/
 oopwarmup1/.idea/
 seleniumpractice/.idea/
+selenidelearning/.idea/
+selenidelearning/build/
+seleniumpractice/screenshot/

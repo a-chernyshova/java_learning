@@ -18,16 +18,14 @@ public class YandexMailTest {
             "advanced web-app testing problems."};
 
     private String authorization(User user){
-        HomePage homePage = new HomePage();
-        homePage.open();
+        new HomePage().open();
 
         LoginPage logForm = new LoginPage();
         logForm.fillLoginCredentials(user);
         return logForm.returnTitle();
     }
     private String incorrectAuthorization(User user){
-        HomePage homePage = new HomePage();
-        homePage.open();
+        new HomePage().open();
 
         LoginPage logForm = new LoginPage();
         logForm.fillIncorrectLoginCredentials(user);
@@ -68,8 +66,7 @@ public class YandexMailTest {
 
     @Test(enabled = true, dependsOnMethods = {"sendDraftTest"})
     public void checkDraftTest(){
-        Menu mailBoxMenu = new Menu();
-        LettersContainer lettersList = mailBoxMenu.openDraftsFolder();
+        LettersContainer lettersList = new Menu().openDraftsFolder();
         try{
             lettersList.getIsEmptyListLocator();
         }catch (NoSuchElementException e){
@@ -79,8 +76,7 @@ public class YandexMailTest {
 
     @Test(enabled = true, dependsOnMethods = {"sendDraftTest"})
     public void checkSentTest(){
-        Menu mailBoxMenu = new Menu();
-        LettersContainer mailList = mailBoxMenu.openSentFolder();
+        LettersContainer mailList = new Menu().openSentFolder();
         String title = mailList.getLastMessageSubject();
         String email = mailList.getLastMessageAddress();
 
